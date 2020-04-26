@@ -8,11 +8,11 @@ description: How to connect to the Javascript SDK
 
 ### Installing
 
-BEPTools is powered by the Javascript SDK library. 
+BEPTools is powered by the Javascript SDK library.
 
 To add Binance Chain [Javascript SDK](https://github.com/binance-chain/javascript-sdk) to your WebApp, run the following:
 
-```
+```text
 $ npm i @binance-chain/javascript-sdk
 ```
 
@@ -24,9 +24,9 @@ Tips here: [https://github.com/binance-chain/javascript-sdk](https://github.com/
 
 ### Binance.js
 
-To keep all the BinanceChain related functions together, we will create a `Binance.js` file located at `/src/clients/binance.js` in the BEPTools directory. 
+To keep all the BinanceChain related functions together, we will create a `Binance.js` file located at `/src/clients/binance.js` in the BEPTools directory.
 
-We then need to import all the Binance functions we will use, alongside `axios` which is a popular http client. 
+We then need to import all the Binance functions we will use, alongside `axios` which is a popular http client.
 
 {% code title="/src/clients/binance.js" %}
 ```text
@@ -80,7 +80,7 @@ getBalances(address) {
  getMarkets(limit = 1000, offset = 0) {
     return this.bnbClient.getMarkets(limit, offset)
   }
- 
+
 // Get the list of on-chain fees 
    getfees() {
     return this.httpClient.get("/fees")
@@ -88,8 +88,8 @@ getBalances(address) {
 ```
 
 {% hint style="info" %}
-There are many more functions in the Javascipt SDK that you can call to return information on Binance Chain.   
-  
+There are many more functions in the Javascipt SDK that you can call to return information on Binance Chain.
+
 [https://github.com/binance-chain/javascript-sdk/wiki/API-Documentation](https://github.com/binance-chain/javascript-sdk/wiki/API-Documentation)
 {% endhint %}
 
@@ -122,10 +122,9 @@ async unfreeze(address, asset, amount) {
     const result = await manager.unfreeze(address, asset, amount)
     return result
 }
-
 ```
 
-We can now make transactions from anywhere else in the app just by passing in the variable required. 
+We can now make transactions from anywhere else in the app just by passing in the variable required.
 
 Let's now connect a wallet!
 

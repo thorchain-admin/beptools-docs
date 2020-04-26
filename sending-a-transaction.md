@@ -4,7 +4,7 @@ description: How to send a simple transfer of coins.
 
 # Sending a Transaction
 
-The user should use a variety of forms and buttons to input their intent to send a transaction, including the sending coin, amount and destination addresses. 
+The user should use a variety of forms and buttons to input their intent to send a transaction, including the sending coin, amount and destination addresses.
 
 You should also let them add a `MEMO` to describe the transaction.
 
@@ -37,7 +37,7 @@ try {
           const txURL = Binance.txURL(results.result[0].hash)
           message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>)
         }
-        
+
       } catch(err) {
         window.err = err
         message.error(err.message)
@@ -46,7 +46,5 @@ try {
   }
 ```
 
-We use messages to gracefully handle the transaction response and any errors. 
-
-
+We use messages to gracefully handle the transaction response and any errors.
 

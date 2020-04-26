@@ -8,7 +8,7 @@ We were able to add the Javascript SDK to our app and then created a single `bin
 
 {% page-ref page="connecting.md" %}
 
-We then added the Keystore wallet option, reading the address and saving it in state. 
+We then added the Keystore wallet option, reading the address and saving it in state.
 
 {% page-ref page="connect-to-wallet.md" %}
 
@@ -22,5 +22,5 @@ Finally we were able to create and send a Binance Chain transaction.
 
 Thanks for joining us!
 
-More tutorials will be posted here soon. 
+More tutorials will be posted here soon.
 

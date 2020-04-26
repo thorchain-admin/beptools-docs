@@ -8,7 +8,7 @@ description: Adding Wallet Connect
 
 ### Setup
 
-We need to make three additions to our app to connect Ledger. 
+We need to make three additions to our app to connect Ledger.
 
 1. Update our `Binance.js` file
 2. Add a Ledger connect option to the **Unlock Page**
@@ -40,9 +40,9 @@ const WalletConnectPane = props => {
   const context = useContext(Context)
   const walletConnect = async () => { const walletConnector = window.mywallet = new WalletConnect
   ({ bridge: "https://bridge.walletconnect.org"});
-  
+
     walletConnector.killSession()
-    
+
     // Check if connection is already established
     if (!walletConnector.connected) {
       console.log("Creating session")
@@ -56,26 +56,26 @@ const WalletConnectPane = props => {
         })
       })
   }
-  
+
   // Subscribe to connection events
   walletConnector.on("connect", (error, payload) => {
     if (error) {
       throw error;
     }
-  
+
     // Close QR Code Modal
     WalletConnectQRCodeModal.close();
-  
+
     // Get provided accounts and chainId
     // const { accounts, chainId } = payload.params[0];
-  
+
     walletConnector.getAccounts().then(result => {
       // Returns the accounts
       const account = result.find((account) => account.network === 714);
       console.log("ACCOUNT:", account)
       console.log("WALLET CONNECT ACCOUNTS RESULTS " + account.address);
       console.log("ADDR:", crypto.decodeAddress(account.address))
-      
+
       context.setContext({
         "wallet": {
           "walletconnect": walletConnector,
@@ -91,18 +91,18 @@ const WalletConnectPane = props => {
         console.error(error);
       })
   })
-  
+
   walletConnector.on("session_update", (error, payload) => {
     if (error) {
       throw error;
     }
   })
-  
+
   walletConnector.on("disconnect", (error, payload) => {
     if (error) {
       throw error;
     }
-  
+
     // Delete walletConnector
     context.forgetWallet()
   })
@@ -129,7 +129,7 @@ if (context.wallet.walletconnect) {
       Binance.getAccount(context.wallet.address)
         .then((response) => {
           const account = response.result
-          
+
           const tx = window.tx = {
             accountNumber: account.account_number.toString(),
             chainId: CHAIN_ID,

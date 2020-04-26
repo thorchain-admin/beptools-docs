@@ -22,7 +22,6 @@ In this example we will use Context. Here is some of the scaffolding you will ne
 
 {% code title="src/components/pages/wallet/keystore.js" %}
 ```text
-
 import React, { useState, useContext } from 'react'
 ...
 const Keystore = props => {
@@ -53,7 +52,7 @@ We then add some react hooks to set state variables, as well as the file-picker 
 
 // File reader methods
   var reader = new FileReader();
-  
+
   reader.onload = () => {
     try {
       const key = JSON.parse(reader.result)
@@ -67,16 +66,16 @@ We then add some react hooks to set state variables, as well as the file-picker 
       setKeystoreError("Not a valid json file")
     }
   }
-  
+
 // Connect your upload button to this
   const uploadKeystore = f => {
     reader.readAsText(f)
   }
 ```
 
-This enough now to let the user click a button to upload a file, select a keystore file, do some simple validation on the file, then upload it. 
+This enough now to let the user click a button to upload a file, select a keystore file, do some simple validation on the file, then upload it.
 
-We then need to add an input field to allow the user to enter a password, then a button to unlock the wallet and persist the keystore and address into the Context. 
+We then need to add an input field to allow the user to enter a password, then a button to unlock the wallet and persist the keystore and address into the Context.
 
 Importantly, we are **not** going to save the privatekey or password the user types in, we will **only** store how the wallet is connected and the public address:
 
@@ -85,7 +84,7 @@ Importantly, we are **not** going to save the privatekey or password the user ty
   const onPasswordChange = e => {
     setPassword(e.target.value)
   }
-  
+
   // Connect your unlock button to this
   const unlock = () => {
     const privateKey = crypto.getPrivateKeyFromKeyStore(keystore, password)
@@ -101,7 +100,7 @@ Importantly, we are **not** going to save the privatekey or password the user ty
   }
 ```
 
-![The Keystore UI](.gitbook/assets/image%20%284%29.png)
+![The Keystore UI](.gitbook/assets/image-4.png)
 
 The html for the above pane is below. \(Note: it uses Ant Design `Row, Button, Icon, Text, Input` components\)
 

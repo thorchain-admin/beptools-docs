@@ -12,3 +12,7 @@
 * [Ledger](wallets/ledger.md)
 * [Wallet Connect](wallets/wallet-connect.md)
 
+## Transactions
+
+* [Swap \(BEP3\)](transactions/swap-bep3.md)
+

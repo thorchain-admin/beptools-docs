@@ -6,7 +6,7 @@ description: How to read the wallet and display a list of balances.
 
 ## Balances
 
-We should have a mechanism to read the balance of the address. We can do this by querying the context, then passing the stored address back to our Binance client to return the balances. 
+We should have a mechanism to read the balance of the address. We can do this by querying the context, then passing the stored address back to our Binance client to return the balances.
 
 We then need to parse the balances and load them into a local array
 
@@ -14,7 +14,7 @@ We then need to parse the balances and load them into a local array
   // Get the context which contains the wallet address
   const context = useContext(Context)
   const [balances, setBalances] = useState(null)
-  
+
   const getBalances = () => {
     if (context.wallet && context.wallet.address) {    
       Binance.getBalances(context.wallet.address)
@@ -29,22 +29,22 @@ We then need to parse the balances and load them into a local array
             }
           ))
           setBalances([...b])
-           
+
         })
         .catch((error) => {
-           
+
         })
     }
   }
 ```
 
-We use some React hooks and a mapping to display a row of Coins. Note, we use some AntDesign `Row, Col` components, and our own `Coin` component. 
+We use some React hooks and a mapping to display a row of Coins. Note, we use some AntDesign `Row, Col` components, and our own `Coin` component.
 
 ```text
  const [selectedCoin, setSelectedCoin] = useState(null)
- 
+
  ...
- 
+
      {(balances || []).map((coin) => (
           <Row key={coin.ticker} style={coinRowStyle}>
             <Col xs={24} sm={24} md={12} lg={8} xl={6}>
@@ -55,7 +55,7 @@ We use some React hooks and a mapping to display a row of Coins. Note, we use so
      }
 ```
 
-This is our custom `Coin` method, which also uses the `Center, Icon` AntDesign components. 
+This is our custom `Coin` method, which also uses the `Center, Icon` AntDesign components.
 
 {% code title="/src/Components.js" %}
 ```text
@@ -87,7 +87,5 @@ Coin.defaultProps = {
 
 The final UI should look like:
 
-![Our custom row of Coins, with Icon, Balance and a Selection Picker. ](.gitbook/assets/image%20%285%29.png)
-
-
+![Our custom row of Coins, with Icon, Balance and a Selection Picker. ](.gitbook/assets/image-5.png)
 

@@ -8,7 +8,7 @@ description: How to connect to Ledger
 
 ### Setup
 
-We need to make three additions to our app to connect Ledger. 
+We need to make three additions to our app to connect Ledger.
 
 1. Update our `Binance.js` file
 2. Add a Ledger connect option to the **Unlock Page**
@@ -43,7 +43,7 @@ ledger.transports.u2f = u2f_transport
 window.ledger = ledger
 ```
 
-We use React Context to manage app-wide wallet state, as well as React Hooks to manage state for this page. 
+We use React Context to manage app-wide wallet state, as well as React Hooks to manage state for this page.
 
 Since the Ledger unlocking process requires user input to a hardware device, we add a `connecting` flag. We also need to capture the index the user chooses on their ledger, with the default value of `0`
 
@@ -63,7 +63,7 @@ The ledgerConnect process is as follows:
 6. Set the details into context and push to the next page.
 7. 
 {% hint style="info" %}
-The HD Path \(Hierarchial Deterministic\) is a standard of generating public-private key pairs and their associated addresses for different chains. 
+The HD Path \(Hierarchial Deterministic\) is a standard of generating public-private key pairs and their associated addresses for different chains.
 
 * **Purpose**: 44 \(BIP44 specification from Bitcoin Core\)
 * **Coin:** \(Bitcoin is 0, Ethereum is 60, Binance Chain is 714\)
@@ -83,17 +83,17 @@ message.success(Please approve on your ledger, 5)
   const timeout = 50000
   const transport = await ledger.transports.u2f.create(timeout)
   const app = window.app = new ledger.app(transport, 100000, 100000)
-  
+
   // we can provide the hd path (app checks first two parts are same as below)
   const hdPath = [44, 714, 0, 0, ledgerIndex]
-  
+
   // get public key
   try {
     let pk = (await app.getPublicKey(hdPath)).pk
-  
+
     // get address from pubkey
     const address = crypto.getAddressFromPublicKey(pk, Binance.getPrefix())
-  
+
     context.setContext({
       "wallet": {
         "address": address,
@@ -112,11 +112,9 @@ message.success(Please approve on your ledger, 5)
 }
 ```
 
+We need some UI elements, which include the Index input and the button to connect. We also add some nice graphics, and some info text to match Binance Chain page. The key elements are in the input element, and the button towards the bottom.
 
-
-We need some UI elements, which include the Index input and the button to connect. We also add some nice graphics, and some info text to match Binance Chain page. The key elements are in the input element, and the button towards the bottom. 
-
-![](../.gitbook/assets/image%20%286%29.png)
+![](../.gitbook/assets/image-6.png)
 
 ```text
 <div>
@@ -228,7 +226,7 @@ Once the transaction is prepared by taking user input, this is the method to cal
       try {
       // The transaction method (transfer, send, freeze etc)
         const results = window.results = await Binance.multiSend(context.wallet.address, transactions, memo)
-        
+
         if (results.result[0].ok) {
           const txURL = Binance.txURL(results.result[0].hash)
           message.success(<Text>Sent. <a target="_blank" rel="noopener noreferrer" href={txURL}>See transaction</a>.</Text>)
@@ -238,10 +236,9 @@ Once the transaction is prepared by taking user input, this is the method to cal
         message.error(err.message)
       }
     }
-
 ```
 
-We handle errors in the browser in order to display them to the user. `message` is an antdesign component for throwing up messages to the user. 
+We handle errors in the browser in order to display them to the user. `message` is an antdesign component for throwing up messages to the user.
 
 ### Freeze Transactions
 
@@ -257,8 +254,4 @@ The following is the only difference when sending a freeze transaction:
     throw new Error("invalid mode")
   }
 ```
-
-
-
-
 

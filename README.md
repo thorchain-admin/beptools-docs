@@ -6,15 +6,15 @@ description: A quick tutorial on a Binance Chain powered WebApp.
 
 ## Overview
 
-In this tutorial we will go over installing the SDK, adding a wallet, reading the wallet balance and then sending a transaction. 
+In this tutorial we will go over installing the SDK, adding a wallet, reading the wallet balance and then sending a transaction.
 
-Code snippets will be posted along the way, and we will use the [beptools.org](https://gitlab.com/canyacoin/binancechain/beptools) codebase as a working example that you can compile. 
+Code snippets will be posted along the way, and we will use the [beptools.org](https://gitlab.com/canyacoin/binancechain/beptools) codebase as a working example that you can compile.
 
 ## BEPTools Code Example
 
 To get started, clone the BEPTools codebase in a new local directory on your machine:
 
-```
+```text
 $ git clone https://gitlab.com/canyacoin/binancechain/beptools.git
 ```
 
@@ -30,7 +30,7 @@ We will also use YARN for package management:
 
 Once you have cloned, you can enter the directory and start the web app using yarn:
 
-```
+```text
 cd beptools
 yarn install
 yarn start
@@ -39,12 +39,10 @@ yarn start
 The webapp should launch to your `localhost`
 
 {% hint style="info" %}
-The web-app also uses Ant-design, a popular React UI framework. 
+The web-app also uses Ant-design, a popular React UI framework.
 
 [https://ant.design/](https://ant.design/)
 {% endhint %}
-
-
 
 ## Quick Links
 
@@ -65,8 +63,4 @@ Read the wallet balances to create a web-viewable wallet:
 Create and send a Binance Chain transaction:
 
 {% page-ref page="sending-a-transaction.md" %}
-
-
-
-
 
