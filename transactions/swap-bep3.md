@@ -52,7 +52,7 @@ If not, then add it: [https://docs.binance.org/api-reference/cli.html](https://d
 Check the balances on your accounts first:
 
 ```text
-./tbnbcli account tbnb1vh0ka0na9ded8h34vd55e9qpa4qhe5cvql9nu3 --chain-id Binance-Chain-Nile --node https://data-seed-pre-1-s3.binance.org:443 --indentRun the Transactions
+./tbnbcli account tbnb1vh0ka0na9ded8h34vd55e9qpa4qhe5cvql9nu3 --chain-id Binance-Chain-Nile --node https://data-seed-pre-1-s3.binance.org:443 --indent
 ```
 
 ### Run the Transactions
