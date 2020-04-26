@@ -99,7 +99,7 @@ Save the number securely and give the `swapID` to the buyer.
 
 #### 2\) Deposit Transaction
 
-Beller makes the `deposit` transaction next, adding the `swapID` and the buying amount of tokens:
+Buyer makes the `deposit` transaction next, adding the `swapID` and the buying amount of tokens:
 
 ```text
 ./tbnbcli token deposit --swap-id 3b75685b8b09f9d0fc04ecfcd15e673fb801bcb53b6cffb365463d453aabbcfa  --amount 10000000:BNB --from main2 --chain-id Binance-Chain-Nile --trust-node --node http://data-seed-pre-0-s3.binance.org:80
